@@ -7,13 +7,15 @@
         die("Error: " . $connection->connect_error);
     }
     
-    $exists = $connection->select_db();
+    $exists = $connection->select_db($database);
     
-    if($exists) {
-        echo "Database exists";
+    if(!$exists) {
+       $qurey = $connection->query("CREATE DATABASE $database");
+       
+       if($qurey) {
+           echo "Successfully created database" . $database;
+       }
     }
     
-    
-    $connection->close($database);  
-    
+    $connection->close();  
     
