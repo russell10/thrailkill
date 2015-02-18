@@ -35,9 +35,6 @@
     }
     
     
-    
-    
-    
     $connection->close();  
     
     
